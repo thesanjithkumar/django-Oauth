@@ -2,6 +2,36 @@
 
 This is a sample project to explore social (Google) OAuth 2.0 authentication integration with Django using [`django-allauth`](https://django-allauth.readthedocs.io/en/latest/index.html).
 
+## Configuring Google APIs
+
+To add Google login on your app, you’ll need to set up OAuth application via [**Google Developers Console**](https://console.developers.google.com/).
+Head over to Google Developer APIs Console and **create a new project**:
+
+- Go to **Dashboard**, **create a New Project**
+- **Name your new project**, preferably your website or app name. User will be able to see this project name when we redirect them to Google login page.
+- **Click 'Create'** to proceed.
+
+### 2. Register App at OAuth Consent Screen
+
+Next, register your app by filling the **OAuth consent screen**. You only need to provide 'App name', 'User support email' and 'Email addresses' under 'Developer contact information. Click 'Save and Continue' button.
+
+### 3. Create New API Credentials
+
+Back to 'Dashboard', **go to 'Credentials'** on left panel and **click 'Create Credentials' button at the top**. On the dropdown, **choose 'OAuth Client ID' option**.
+
+Under **'Authorized JavaScript origins'**, add the following URIs:
+- `http://localhost:8000`
+- `http://127.0.0.1:8000`
+
+Under **'Authorized redirect URIs'**, add the following URIs:
+- `http://127.0.0.1:8000/accounts/google/login/callback/`
+- `http://localhost:8000/accounts/google/login/callback/`
+
+The reason why we have two near-identical copies of URIs is because Django web server can be accessed using either `localhost:8000` or `127.0.0.1:8000`. Also, should the app be in production, the URIs should be amended to include the domain name instead.
+
+On the same page (left hand side), you should be able to see your **Client ID** and **Client secret**. Copy these two details for the next step.
+
+
 ### Add social app in Django admin
 
 First, **create a superuser** by running the following command in a terminal:
