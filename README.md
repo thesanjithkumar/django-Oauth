@@ -75,6 +75,7 @@ It is possible that **Django created an 'example.com' site for you already** (if
 Consider playing around with the `SITE_ID` value. For example: `SITE_ID = 3`, etc.
 
 <br>
+
 ## References
 
 1. https://github.com/pennersr/django-allauth
